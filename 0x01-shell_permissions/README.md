@@ -9,3 +9,4 @@ Task 7_execution permission to the owner, the group owner and the other users, t
 Task 8_ permission to the file hello owner no permission at all, group no permission at all, other users all permission
 Task 9_mode of the file hello -rwxr-x-wx 1 julien julien 23 Sep 20 14:25 hello
 Task 10_mode of the file hello the same as olleh’s mode
+ Task 11_script that adds execute permission to all subdirectories of the current directory for the owner, the group owner and all other users 
