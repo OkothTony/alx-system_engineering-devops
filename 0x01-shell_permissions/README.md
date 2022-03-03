@@ -15,3 +15,4 @@ Task 10_mode of the file hello the same as olleh’s mode
 Task 14_changes the owner to vincent and the group owner to staff for all the files and directories in the working directory
 Task 16_Write a script that changes the owner of the file hello to betty only if it is owned by the user guillaume
 Task 15_Write a script that changes the owner and the group owner of _hello to vincent and staff respectively
+Task 17_ script that will play the StarWars IV episode in the terminal
