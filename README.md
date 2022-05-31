@@ -1,3 +1,1 @@
-# alx-system_engineering-devops
-#!/bin/bash
-ls
+Shell, init files, variables and expansions
