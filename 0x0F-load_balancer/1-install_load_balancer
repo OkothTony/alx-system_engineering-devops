@@ -1,8 +1,28 @@
 #!/usr/bin/env bash
-# Script that configures HAproxy in a load balancer 
-sudo apt-get -y install software-properties-common
-sudo add-apt-repository -y ppa:vbernat/haproxy-2.0
-sudo apt-get -y update
-sudo apt-get -y install haproxy=2.0.\*
-echo -e "\nfrontend http\n\tbind *:80\n\tmode http\n\tdefault_backend web-backend\n\nbackend web-backend\n\tbalance roundrobin\n\tserver 9475-web-01 44.210.101.66:80 check\n\tserver 9475-web-02 3.236.81.247:80 check" >> sudo /etc/haproxy/haproxy.cfg
-sudo service haproxy restart
+# Install and configure HAproxy on your lb-01 server.
+# Requirements:
+# Configure HAproxy so that it send traffic to web-01 and web-02
+# Distribute requests using a roundrobin algorithm
+# Make sure that HAproxy can be managed via an init script
+
+# Enable a dedicated PPA with the following command:
+apt-get install -y --no-install-recommends software-properties-common
+add-apt-repository -y ppa:vbernat/haproxy-2.6
+apt-get -y update
+# Install HAproxy
+apt-get install -y haproxy=2.6.\*
+
+# Load balancing configuration
+printf %s "
+frontend http
+    bind *:80
+    mode http
+    
+    default_backend web-backend
+backend web-backend
+    balance roundrobin
+    server 9475-web-01 44.210.101.66:80 check
+    server 9475-web-02 3.236.81.247:80 check
+" >> /etc/haproxy/haproxy.cfg
+
+service haproxy restart
