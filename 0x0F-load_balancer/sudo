@@ -1,0 +1,10 @@
+
+frontend http
+	bind *:80
+	mode http
+	default_backend web-backend
+
+backend web-backend
+	balance roundrobin
+	server 9475-web-01 44.210.101.66:80 check
+	server 9475-web-02 3.236.81.247:80 check /etc/haproxy/haproxy.cfg
